@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Security">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="HistoryDetailType" name="HistoryDetail" maxOccurs="unbounded" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute type="xs:string" name="Id"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="HistoryDetailType">
+        <xs:sequence>
+            <xs:element type="xs:date" name="EndDate"/>
+            <xs:element type="xs:float" name="Value"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

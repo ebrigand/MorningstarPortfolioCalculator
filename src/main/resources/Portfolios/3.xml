@@ -1,0 +1,10 @@
+<Portfolio Id="3">
+	<Transactions>
+		<Transaction>
+			<SecurityId>A</SecurityId>
+			<Type>Buy</Type>
+			<Date>2004-11-30</Date>
+			<Amount>10000</Amount>
+		</Transaction>
+	</Transactions>
+</Portfolio>

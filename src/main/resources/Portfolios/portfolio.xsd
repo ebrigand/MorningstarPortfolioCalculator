@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="Portfolio">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element type="TransactionsType" name="Transactions"/>
+            </xs:sequence>
+            <xs:attribute type="xs:int" name="Id"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="TransactionsType">
+        <xs:sequence>
+            <xs:element type="TransactionType" name="Transaction" maxOccurs="unbounded" minOccurs="0"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="TransactionType">
+        <xs:sequence>
+            <xs:element name="SecurityId" type="xs:string"/>
+            <xs:element name="Type" type="ActionType"/>
+            <xs:element name="Date" type="xs:date"/>
+            <xs:element name="Amount" type="xs:long" />
+        </xs:sequence>
+    </xs:complexType>
+    <xs:simpleType name="ActionType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="Buy"/>
+            <xs:enumeration value="Sell"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
