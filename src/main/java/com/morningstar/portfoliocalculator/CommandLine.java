@@ -22,7 +22,7 @@ public class CommandLine {
             if(dateSplit.length != 3){
                 throw new RuntimeException("Date malformated, format expected: YYYY-MM-DD");
             }
-            GregorianCalendar calendar = null;
+            GregorianCalendar calendar;
             try{
                 calendar = new GregorianCalendar(Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]), Integer.parseInt(dateSplit[2]));
             }catch (NumberFormatException e) {
