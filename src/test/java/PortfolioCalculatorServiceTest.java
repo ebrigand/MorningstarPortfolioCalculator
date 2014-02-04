@@ -27,6 +27,10 @@ public class PortfolioCalculatorServiceTest {
     static final int DATE_MONTH_OF_30_11_2011_FOR_COMPUTE_PORTFOLIO_VALUE = 10;
     static final int DATE_DAY_OF_30_11_2011_FOR_COMPUTE_PORTFOLIO_VALUE = 30;
 
+    static final int DATE_YEAR_OF_30_11_2012_FOR_COMPUTE_PORTFOLIO_VALUE = 2012;
+    static final int DATE_MONTH_OF_30_11_2012_FOR_COMPUTE_PORTFOLIO_VALUE = 10;
+    static final int DATE_DAY_OF_30_11_2012_FOR_COMPUTE_PORTFOLIO_VALUE = 30;
+
     static final int DATE_YEAR_OF_01_11_2011_FOR_BEST_PORTFOLIO = 2011;
     static final int DATE_MONTH_OF_01_11_2011_FOR_BEST_PORTFOLIO = 10;
     static final int DATE_DAY_OF_01_11_2011_FOR_BEST_PORTFOLIO = 01;
@@ -53,6 +57,8 @@ public class PortfolioCalculatorServiceTest {
     static final int INVEST_AMOUNT_1000 = 1000;
 
     static final double EXPECTED_RESULT_FOR_PORT_ID_3_AND_YEAR_30_11_2011 = 14765.28;
+    static final double EXPECTED_RESULT_FOR_PORT_ID_3_AND_YEAR_30_11_2012 = 14765.28;
+
     static final double EXPECTED_RESULT_FOR_PORT_ID_4_AND_YEAR_30_11_2011 = 15863.54;
 
     static  final int TRANSACTION_LIST_SIZE_FOR_BEST_PORTFOLIO_WITH_END_DATE_BETWEEN_01_11_2011_AND_01_11_2020 = 16;
@@ -63,6 +69,8 @@ public class PortfolioCalculatorServiceTest {
 
     static final Calendar calendar30_11_2011;
 
+    static final Calendar calendar30_11_2012;
+
     static final Calendar startCalendar01_11_2011;
 
     static final Calendar endCalendar15_11_2011;
@@ -71,6 +79,7 @@ public class PortfolioCalculatorServiceTest {
 
     static {
         calendar30_11_2011 = new GregorianCalendar(DATE_YEAR_OF_30_11_2011_FOR_COMPUTE_PORTFOLIO_VALUE, DATE_MONTH_OF_30_11_2011_FOR_COMPUTE_PORTFOLIO_VALUE, DATE_DAY_OF_30_11_2011_FOR_COMPUTE_PORTFOLIO_VALUE);
+        calendar30_11_2012 = new GregorianCalendar(DATE_YEAR_OF_30_11_2012_FOR_COMPUTE_PORTFOLIO_VALUE, DATE_MONTH_OF_30_11_2012_FOR_COMPUTE_PORTFOLIO_VALUE, DATE_DAY_OF_30_11_2012_FOR_COMPUTE_PORTFOLIO_VALUE);
         startCalendar01_11_2011 = new GregorianCalendar(DATE_YEAR_OF_01_11_2011_FOR_BEST_PORTFOLIO, DATE_MONTH_OF_01_11_2011_FOR_BEST_PORTFOLIO, DATE_DAY_OF_01_11_2011_FOR_BEST_PORTFOLIO);
         endCalendar15_11_2011 = new GregorianCalendar(DATE_YEAR_OF_15_11_2011_FOR_BEST_PORTFOLIO, DATE_MONTH_OF_15_11_2011_FOR_BEST_PORTFOLIO, DATE_DAY_OF_15_11_2011_FOR_BEST_PORTFOLIO);
         endCalendar15_11_2020 = new GregorianCalendar(DATE_YEAR_OF_15_11_2020_FOR_BEST_PORTFOLIO, DATE_MONTH_OF_15_11_2020_FOR_BEST_PORTFOLIO, DATE_DAY_OF_15_11_2020_FOR_BEST_PORTFOLIO);
@@ -117,6 +126,12 @@ public class PortfolioCalculatorServiceTest {
     public void computePortfolioValueForPortId3AndDate30_11_2011() throws PortfolioCalculatorServiceException {
         BigDecimal portfolioValue = portfolioCalculatorService.computePortfolioValue(PORT_ID_3, calendar30_11_2011.getTime());
         Assert.assertTrue(portfolioValue.doubleValue() == EXPECTED_RESULT_FOR_PORT_ID_3_AND_YEAR_30_11_2011);
+    }
+
+    @Test
+    public void computePortfolioValueForPortId3AndDate30_11_2012() throws PortfolioCalculatorServiceException {
+        BigDecimal portfolioValue = portfolioCalculatorService.computePortfolioValue(PORT_ID_3, calendar30_11_2012.getTime());
+        Assert.assertTrue(portfolioValue.doubleValue() == EXPECTED_RESULT_FOR_PORT_ID_3_AND_YEAR_30_11_2012);
     }
 
     @Test

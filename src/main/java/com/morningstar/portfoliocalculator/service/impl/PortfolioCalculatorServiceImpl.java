@@ -74,9 +74,12 @@ public class PortfolioCalculatorServiceImpl implements PortfolioCalculatorServic
             //Compute the portfolio value for the input date (for each security id, multiply the sum of share related to the security id with the share price related to the input date)
             for(Map.Entry<String, BigDecimal> entry : map.entrySet()){
                 Security security = securityService.getById(entry.getKey());
-                for(HistoryDetailType historyDetailType : security.getHistoryDetail()){
-                    if(date.compareTo(historyDetailType.getEndDate().toGregorianCalendar().getTime()) <= 0){
-                        portfolioValue = portfolioValue.add(entry.getValue().multiply(new BigDecimal(historyDetailType.getValue())));
+                for(int i=0; i<security.getHistoryDetail().size(); i++){
+                    //Find the matching price for the input date
+                    //IMPORTANT If the input date is after the last date for a price of the security, the last date is choose, the rule is not specified for this case
+                    //Because the actual rule is when a price is not found for a date, the next price for the NEXT date is chose
+                    if(date.compareTo(security.getHistoryDetail().get(i).getEndDate().toGregorianCalendar().getTime()) <= 0 || i == security.getHistoryDetail().size()-1){
+                        portfolioValue = portfolioValue.add(entry.getValue().multiply(new BigDecimal(security.getHistoryDetail().get(i).getValue())));
                     }
                 }
             }
