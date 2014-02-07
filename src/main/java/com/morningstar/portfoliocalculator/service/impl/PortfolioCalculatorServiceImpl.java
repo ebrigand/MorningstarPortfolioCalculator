@@ -26,6 +26,15 @@ public class PortfolioCalculatorServiceImpl implements PortfolioCalculatorServic
 
     private SecurityDataAccessService securityService;
 
+    private static PortfolioCalculatorService portfolioCalculatorService = null;
+
+    public static synchronized PortfolioCalculatorService getInstance(PortfolioDataAccessService portfolioService, SecurityDataAccessService securityService) {
+        if(portfolioCalculatorService == null){
+            portfolioCalculatorService = new PortfolioCalculatorServiceImpl(portfolioService, securityService);
+        }
+        return portfolioCalculatorService;
+    }
+
     public PortfolioCalculatorServiceImpl(PortfolioDataAccessService portfolioService, SecurityDataAccessService securityService){
         this.portfolioService = portfolioService;
         this.securityService = securityService;

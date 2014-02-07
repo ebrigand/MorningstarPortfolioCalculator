@@ -22,6 +22,15 @@ public class XAOSecurityService implements SecurityDataAccessService {
 
     private JAXBContext context;
 
+    private static XAOSecurityService xaoSecurityService = null;
+
+    public static synchronized XAOSecurityService getInstance() throws DataAccessException{
+        if(xaoSecurityService != null){
+            xaoSecurityService = new XAOSecurityService();
+        }
+        return xaoSecurityService;
+    }
+
     public XAOSecurityService() throws DataAccessException {
         try{
             context = JAXBContext.newInstance(Security.class);

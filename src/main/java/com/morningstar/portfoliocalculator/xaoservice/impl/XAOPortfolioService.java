@@ -3,10 +3,12 @@ package com.morningstar.portfoliocalculator.xaoservice.impl;
 import com.morningstar.portfoliocalculator.model.portfolio.Portfolio;
 import com.morningstar.portfoliocalculator.xaoservice.PortfolioDataAccessService;
 import com.morningstar.portfoliocalculator.xaoservice.exception.DataAccessException;
+import org.omg.CORBA.DATA_CONVERSION;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import java.nio.file.Path;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * XML Access Object Service for the Portfolio entity
@@ -18,6 +20,15 @@ public class XAOPortfolioService implements PortfolioDataAccessService {
     private Path portfolioDirPath = XAOLocationEnum.PORTFOLIOS_PATH.getPath();
 
     private JAXBContext context;
+
+    private static XAOPortfolioService xaoPortfolioService = null;
+
+    public static synchronized XAOPortfolioService getInstance() throws DataAccessException{
+        if(xaoPortfolioService != null){
+            xaoPortfolioService = new XAOPortfolioService();
+        }
+        return xaoPortfolioService;
+    }
 
     public XAOPortfolioService() throws DataAccessException {
         try{

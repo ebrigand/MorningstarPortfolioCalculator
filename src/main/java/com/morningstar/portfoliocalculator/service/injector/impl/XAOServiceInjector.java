@@ -22,7 +22,7 @@ public class XAOServiceInjector implements ServiceInjector {
     @Override
     public PortfolioCalculatorService getPortfolioCalculatorService() throws PortfolioCalculatorServiceException {
         try{
-            return new PortfolioCalculatorServiceImpl(new XAOPortfolioService(), new XAOSecurityService());
+            return PortfolioCalculatorServiceImpl.getInstance(XAOPortfolioService.getInstance(), XAOSecurityService.getInstance());
         } catch (DataAccessException e) {
             throw new PortfolioCalculatorServiceException(e.getMessage());
         }
