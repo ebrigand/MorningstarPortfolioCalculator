@@ -34,7 +34,7 @@
     </dependencies>
 
     <build>
-        <finalName>hangman-game</finalName>
+        <finalName>portfoliocalculator</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
